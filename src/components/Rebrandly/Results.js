@@ -1,28 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {useQuery} from '@apollo/client';
 import { Grid } from "@material-ui/core";
 import styles from './styles';
 import {ArrowRightAlt , ArrowDownward} from '@material-ui/icons';
 import {LINKS_QUERY} from '../../graphqlOperations';
 
-const getIsMobile = () => window.innerWidth <= 959;
-
-export default function Results() {
+export default function Results(props) {
   const classes = styles();
-  const [isMobile, setIsMobile] = useState(getIsMobile());
-
-  useEffect(() => {
-    const onResize = () => {
-        setIsMobile(getIsMobile());
-    }
-
-    window.addEventListener("resize", onResize);
-
-    return () => {
-        window.removeEventListener("resize", onResize);
-    }
-}, []);
-
+  const {isMobile} = props;
 
   const { loading, error, data } = useQuery(LINKS_QUERY);
 
