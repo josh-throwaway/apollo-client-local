@@ -1,26 +1,8 @@
 import { Grid, Typography, Button } from "@material-ui/core";
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => ({
-
-  photo: {
-    display: 'flex',
-    justifyContent: 'center'
-
-  },
-  centered: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-
-  infoText: {
-    paddingBottom: "10px"
-  }
-}));
+import styles from './styles';
 
 export default function InfoPanel() {
-  const classes = useStyles();
+  const classes = styles();
 
   return (
     <Grid container>
@@ -42,7 +24,6 @@ export default function InfoPanel() {
             <Button
               variant="contained"
               color="primary"
-              // disabled={status}
               // onClick={handleClick}
               fullWidth
             >
@@ -53,7 +34,6 @@ export default function InfoPanel() {
           <Button
             variant="contained"
             color="secondary"
-            // disabled={status}
             // onClick={handleClick}
             fullWidth
           >

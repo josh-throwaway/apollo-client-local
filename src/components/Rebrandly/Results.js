@@ -1,32 +1,14 @@
 import React, { useState, useEffect } from "react";
-import {useQuery, gql} from '@apollo/client';
+import {useQuery} from '@apollo/client';
 import { Grid, Typography } from "@material-ui/core";
-import { makeStyles } from '@material-ui/core/styles';
+import styles from './styles';
 import {ArrowRightAlt , ArrowDownward} from '@material-ui/icons';
-
-
-const useStyles = makeStyles((theme) => ({
-
-  result1: {
-    border: "1px solid black"
-  },
-  result0: {
-    backgroundColor: "#c5c5c5",
-    borderLeft: "1px solid black",
-    borderRight: "1px solid black"
-  },
-  centered: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center"
-  }
-}));
+import {LINKS_QUERY} from '../../graphqlOperations';
 
 const getIsMobile = () => window.innerWidth <= 959;
 
-
 export default function Results() {
-  const classes = useStyles();
+  const classes = styles();
   const [isMobile, setIsMobile] = useState(getIsMobile());
 
   useEffect(() => {
@@ -42,15 +24,7 @@ export default function Results() {
 }, []);
 
 
-  const { loading, error, data } = useQuery(gql`
-    {
-      allLinks {
-        slug,
-        url,
-        id
-      }
-    }
-  `);
+  const { loading, error, data } = useQuery(LINKS_QUERY);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error}</p>;

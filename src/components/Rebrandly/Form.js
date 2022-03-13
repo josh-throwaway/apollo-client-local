@@ -1,69 +1,14 @@
-import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { Grid, TextField, Button, Typography} from "@material-ui/core";
-import { useMutation, gql, useQuery } from "@apollo/client";
-
-const ADD_LINK = gql`
-    mutation($url: String!, $slug: String) {
-    createLink(url: $url, slug: $slug) {
-      url, id, slug
-    }
-  }
-`; 
-
-const QUERY_BY_SLUG = gql`
-    query($slug: String!) {
-      linkBySlug(slug: $slug) {
-        url, slug
-    }
-  }
-`;
-
-const LINKS_QUERY = gql`
-  {
-    allLinks {
-      slug,
-      url,
-      id
-    }
-  }
-`;
-
-const useStyles = makeStyles((theme) => ({
-
-  bg: {
-    backgroundColor: "#26384a",
-    minHeight: "12vh"
-  },
-
-  input: {
-    backgroundColor: "white"
-    
-  },
-
-  secondInput: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-
-  firstInput: {
-    display: "flex",
-    justifyContent: "flex-end",
-    alignItems: "center"
-  },
-
-  lastInput: {
-    display: "flex",
-    alignItems: "center"
-  }
-  
-
-}));
+import React, { useState, useEffect } from "react";
+import { Grid, TextField, Button} from "@material-ui/core";
+import { useMutation, useQuery } from "@apollo/client";
+import CircularProgress from '@material-ui/core/CircularProgress';
+import {LINKS_QUERY, ADD_LINK, QUERY_BY_SLUG} from '../../graphqlOperations';
+import styles from './styles';
 
 export default function InputForm() {
+  const classes = styles();
 
-  const classes = useStyles();
+  const [loading, setLoading] = useState(false);
   const [url, setUrl] = useState('');
   const [slug, setSlug] = useState('');
   const [slugError, setSlugError] = useState(false);
@@ -72,18 +17,15 @@ export default function InputForm() {
   const [urlErrorText, setUrlErrorText] = useState("");
   
   let invalidSlug = useQuery(QUERY_BY_SLUG, {variables: {slug}}).data;
-
-  const [addLink, { data, loading, error }] = useMutation(ADD_LINK, {variables: {url, slug}, refetchQueries: [{query: LINKS_QUERY}]});
+  
+  const [addLink, { data, error }] = useMutation(ADD_LINK, {variables: {url, slug}, refetchQueries: [{query: LINKS_QUERY}]});
+  
+  useEffect(() => {
+    setLoading(false)
+  }, [data]);
 
   if (error) return `Submission error! ${error.message}`;
 
-
-  if (data) {
-    setUrl("");
-    setSlug("");
-    return
-    // blankInputs();
-  }
 
   const handleSubmit = () => {
     if (invalidSlug) {
@@ -97,16 +39,17 @@ export default function InputForm() {
       setUrlErrorText("Please enter a url")
       return setUrlError(true)
     }
+    setLoading(true)
     setUrlErrorText("");
     setUrlError(false);
     
     return addLink();
+    
   }
 
   return (
     <Grid container className={classes.bg}>
       <Grid item xs={12} md={6} lg={4} className={classes.firstInput}>
-      {loading ? <Typography>Submitting...</Typography> : ''}
         <TextField 
           label="URL" 
           value={url}
@@ -138,6 +81,7 @@ export default function InputForm() {
           onClick={handleSubmit}
           fullWidth
         >
+          {loading ? <CircularProgress color="inherit" className={classes.circle} /> : ``}
           Shorten URL
         </Button>
       </Grid>
