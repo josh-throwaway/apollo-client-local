@@ -27,7 +27,7 @@ export default function Rebrandly() {
       <Grid item xs={1}></Grid>
       <Grid item xs={10}>
         <InfoPanel isMobile={isMobile}/>
-        <InputForm />
+        <InputForm isMobile={isMobile}/>
         <Results isMobile={isMobile}/>
       </Grid>
       <Grid item xs={1}></Grid>

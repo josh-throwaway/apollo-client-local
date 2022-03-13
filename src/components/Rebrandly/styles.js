@@ -6,43 +6,32 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#26384a",
     minHeight: "12vh"
   },
-  input: {
-    backgroundColor: "white"
-    
+  shortenUrlBtn: {
+    minWidth: "250px"
   },
-  secondInput: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
+  input: {
+    backgroundColor: "white",
+    minWidth: "250px"
   },
   firstInput: {
     display: "flex",
     justifyContent: "flex-end",
     alignItems: "center"
   },
-  lastInput: {
+  secondInput: {
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
+    justifyContent: "flex-start",
+    paddingLeft: "15px"
   },
   circle: {
     marginRight: "10px"
-  },
-
-  photo: {
-    display: 'flex',
-    justifyContent: 'center'
-
   },
   centered: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
   },
-
-  infoText: {
-    paddingBottom: "10px"
-  },
-
   result1: {
     border: "1px solid black"
   },
