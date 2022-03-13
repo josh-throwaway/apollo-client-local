@@ -4,8 +4,8 @@ import { Grid, TextField, Button } from "@material-ui/core";
 import { useMutation, gql } from "@apollo/client";
 
 const ADD_LINK = gql`
-    mutation($url: String!) {
-    createLink(url: $url) {
+    mutation($url: String!, $slug: String) {
+    createLink(url: $url, slug: $slug) {
       url, id, slug
     }
   }
