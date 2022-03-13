@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {useQuery} from '@apollo/client';
-import { Grid, Typography } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import styles from './styles';
 import {ArrowRightAlt , ArrowDownward} from '@material-ui/icons';
 import {LINKS_QUERY} from '../../graphqlOperations';
@@ -34,13 +34,13 @@ export default function Results() {
       {data.allLinks.map(({ url, slug, id }, index) => (
         <Grid container key={index} className={classes[`result${index%2}`]}>
           <Grid item xs={12} md={5} className={classes.centered}>          
-            <Typography>{url}</Typography>
+            <a href={url} target="_blank">{url}</a>
           </Grid>
           <Grid item xs={12} md={2} className={classes.centered}>
             {!isMobile ? <ArrowRightAlt /> : <ArrowDownward />}
           </Grid>
           <Grid item xs={12} md={5} className={classes.centered}> 
-            <Typography>https://hdwy.link/{slug}</Typography>
+            <a href={url} target="_blank">https://hdwy.link/{slug}</a>
           </Grid>
         </Grid>
       ))}
