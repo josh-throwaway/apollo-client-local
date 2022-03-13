@@ -16,8 +16,6 @@ export default function Results() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error}</p>;
 
-  console.log(data)
-
   return (
     <Grid container>
       {data.allLinks.map(({ url, slug, id }) => (
