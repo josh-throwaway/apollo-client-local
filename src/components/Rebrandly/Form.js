@@ -59,7 +59,7 @@ export default function InputForm() {
     }
   `);
 
-  const [addLink, { data, loading, error }] = useMutation(ADD_LINK, {variables: {url, slug}}, {refetchQueries: [{query: LINKS_QUERY}]});
+  const [addLink, { data, loading, error }] = useMutation(ADD_LINK, {variables: {url, slug}, refetchQueries: [{query: LINKS_QUERY}]});
 
   if (error) return `Submission error! ${error.message}`;
 
