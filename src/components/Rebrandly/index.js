@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
 import Results from './Results';
 import InputForm from './Form';
+import InfoPanel from "./InfoPanel";
 
 const useStyles = makeStyles({});
 
@@ -21,7 +22,8 @@ export default function Rebrandly() {
 
   return (
     
-    <Grid container maxWidth="lg">
+    <Grid container>
+      <InfoPanel />
       <InputForm />
       <Results />
 

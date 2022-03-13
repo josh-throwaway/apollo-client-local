@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
-import { Grid, TextField } from "@material-ui/core";
+import { Grid, TextField, Button } from "@material-ui/core";
 
 const useStyles = makeStyles({});
 
@@ -23,7 +23,7 @@ export default function InputForm() {
   return (
     
     <Grid container>
-      <Grid item xs={6} md={6}>
+      <Grid item xs={12} md={6} lg={4}>
         <TextField 
           label="URL" 
           value={url}
@@ -32,7 +32,7 @@ export default function InputForm() {
           fullWidth 
         />
       </Grid>
-      <Grid item xs={6} md={6}>
+      <Grid item xs={12} md={6} lg={4}>
       <TextField 
           label="Add a custom slug (optional)" 
           value={slug}
@@ -40,6 +40,17 @@ export default function InputForm() {
           variant="outlined" 
           fullWidth 
         />
+      </Grid>
+      <Grid item xs={12} lg={4}>
+      <Button
+          variant="contained"
+          color="primary"
+          // disabled={status}
+          onClick={handleSubmit}
+          fullWidth
+        >
+          Shorten URL
+        </Button>
       </Grid>
 
     </Grid>

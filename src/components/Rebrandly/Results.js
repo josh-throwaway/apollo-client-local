@@ -1,4 +1,6 @@
 import {useQuery, gql} from '@apollo/client';
+import { Grid, Typography } from "@material-ui/core";
+
 
 export default function Results() {
   const { loading, error, data } = useQuery(gql`
@@ -16,12 +18,18 @@ export default function Results() {
 
   console.log(data)
 
-  return data.allLinks.map(({ url, slug, id }) => (
-    <div key={id}>
-      <p>
-        url : {url}
-        slug: {slug}
-      </p>
-    </div>
-  ));
+  return (
+    <Grid container>
+      {data.allLinks.map(({ url, slug, id }) => (
+        <Grid container key={id}>
+          <Grid item xs={12} md={8}>          
+            <Typography>{url}</Typography>
+          </Grid>
+          <Grid item xs={12} md={4}> 
+            <Typography>-> https://hdwy.link/{slug}</Typography>
+          </Grid>
+        </Grid>
+      ))}
+    </Grid>
+  );
 }
