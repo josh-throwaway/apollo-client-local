@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import { Grid, TextField, Button } from "@material-ui/core";
+import { useMutation, gql } from "@apollo/client";
+
+const ADD_LINK = gql`
+    mutation($url: String!) {
+    createLink(url: $url) {
+      url, id, slug
+    }
+  }
+`; 
 
 const useStyles = makeStyles({});
 
@@ -10,15 +19,11 @@ export default function InputForm() {
   const [url, setUrl] = useState('')
   const [slug, setSlug] = useState('')
 
+  const [addLink, { data, loading, error }] = useMutation(ADD_LINK, {variables: {url, slug}});
 
-  // useEffect(() => {
-  // }, []);
+  if (loading) return 'Submitting...';
+  if (error) return `Submission error! ${error.message}`;
 
-
-
-  const handleSubmit = () => {
-
-  }
 
   return (
     
@@ -46,7 +51,7 @@ export default function InputForm() {
           variant="contained"
           color="primary"
           // disabled={status}
-          onClick={handleSubmit}
+          onClick={addLink}
           fullWidth
         >
           Shorten URL

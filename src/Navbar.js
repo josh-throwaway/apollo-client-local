@@ -5,7 +5,6 @@ import { Grid } from "@material-ui/core";
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,25 +33,19 @@ export default function Navbar() {
           <Grid container>
             <Grid item xs={false} md={1}></Grid>
             <Grid item xs={4} md={2} >
-
               <Typography variant="h6" className={classes.title}>
                 Rebrandly
               </Typography>
             </Grid>
             <Grid item xs={6} md={3} >
-
               <Button color="inherit">Features</Button>
               <Button color="inherit">Pricing</Button>
             </Grid>
             <Grid item xs={false} md={3} >
-
             </Grid>
             <Grid item xs={2} md={3}  className={classes.login}>
               <Button color="inherit">Login</Button>
-
             </Grid>
-
-
           </Grid>
         </Toolbar>
       </AppBar>
