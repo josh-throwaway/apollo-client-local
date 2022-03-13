@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import { Grid } from "@material-ui/core";
 import Results from './Results';
 import InputForm from './Form';
-import InfoPanel from "./InfoPanel";
+import InfoPanel from "./infoPanel/index";
 
 const getIsMobile = () => window.innerWidth <= 959;
 
