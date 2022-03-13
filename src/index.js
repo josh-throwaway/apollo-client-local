@@ -6,7 +6,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
 
 const client = new ApolloClient({
-  uri: 'https://638l11.sse.codesandbox.io/',
+  uri: 'https://olkk0i.sse.codesandbox.io/',
   cache: new InMemoryCache()
 });
 
