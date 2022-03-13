@@ -32,21 +32,22 @@ export default function Navbar() {
       <AppBar position="static">
         <Toolbar>
           <Grid container>
-            <Grid item xs={4} md={3} lg={2}>
+            <Grid item xs={false} md={1}></Grid>
+            <Grid item xs={4} md={2} >
 
               <Typography variant="h6" className={classes.title}>
                 Rebrandly
               </Typography>
             </Grid>
-            <Grid item xs={4} md={3} lg={2}>
+            <Grid item xs={6} md={3} >
 
               <Button color="inherit">Features</Button>
               <Button color="inherit">Pricing</Button>
             </Grid>
-            <Grid item xs={false} md={3} lg={6}>
+            <Grid item xs={false} md={3} >
 
             </Grid>
-            <Grid item xs={4} md={3} lg={2} className={classes.login}>
+            <Grid item xs={2} md={3}  className={classes.login}>
               <Button color="inherit">Login</Button>
 
             </Grid>

@@ -23,10 +23,13 @@ export default function Rebrandly() {
   return (
     
     <Grid container>
-      <InfoPanel />
-      <InputForm />
-      <Results />
-
+      <Grid item xs={1}></Grid>
+      <Grid item xs={10}>
+        <InfoPanel />
+        <InputForm />
+        <Results />
+      </Grid>
+      <Grid item xs={1}></Grid>
     </Grid>
   );
 }
