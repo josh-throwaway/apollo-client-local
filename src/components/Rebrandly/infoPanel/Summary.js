@@ -1,8 +1,8 @@
-import { Grid, Typography, Button } from "@material-ui/core";
+import { Grid, Typography, Button, withStyles } from "@material-ui/core";
 import styles from './styles';
 
-export default function Summary() {
-  const classes = styles();
+function Summary(props) {
+  const {classes} = props;
 
   return (
     <Grid container >
@@ -39,3 +39,5 @@ export default function Summary() {
     </Grid>
   );
 }
+
+export default withStyles(styles)(Summary);

@@ -1,7 +1,4 @@
-import { makeStyles } from "@material-ui/core/styles";
-
-
-const useStyles = makeStyles((theme) => ({
+const styles = (theme) => ({
   bg: {
     backgroundColor: "#26384a",
     minHeight: "12vh"
@@ -40,6 +37,6 @@ const useStyles = makeStyles((theme) => ({
     borderLeft: "1px solid black",
     borderRight: "1px solid black"
   }
-}));
+});
 
-export default useStyles;
+export default styles;

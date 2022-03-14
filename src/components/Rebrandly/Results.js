@@ -1,13 +1,12 @@
 import React from "react";
 import {useQuery} from '@apollo/client';
-import { Grid } from "@material-ui/core";
+import { Grid, withStyles } from "@material-ui/core";
 import styles from './styles';
 import {ArrowRightAlt , ArrowDownward} from '@material-ui/icons';
 import {LINKS_QUERY} from '../../graphqlOperations';
 
-export default function Results(props) {
-  const classes = styles();
-  const {isMobile} = props;
+function Results(props) {
+  const {isMobile, classes} = props;
 
   const { loading, error, data } = useQuery(LINKS_QUERY);
 
@@ -32,3 +31,4 @@ export default function Results(props) {
     </Grid>
   );
 }
+export default withStyles(styles)(Results);

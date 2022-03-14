@@ -1,11 +1,10 @@
 import React from "react";
-import { Grid } from "@material-ui/core";
+import { Grid, withStyles } from "@material-ui/core";
 import styles from './styles';
 import Summary from './Summary';
 
-export default function InfoPanel(props) {
-  const classes = styles();
-  const {isMobile} = props;
+function InfoPanel(props) {
+  const {isMobile, classes} = props;
 
   return (
   <Grid container>
@@ -17,3 +16,5 @@ export default function InfoPanel(props) {
     </Grid>
   </Grid>);
 }
+
+export default withStyles(styles)(InfoPanel);

@@ -1,7 +1,4 @@
-import { makeStyles } from "@material-ui/core/styles";
-
-
-const useStyles = makeStyles((theme) => ({
+const styles = (theme) => ({
   photo: {
     display: 'flex',
     justifyContent: 'center'
@@ -16,6 +13,6 @@ const useStyles = makeStyles((theme) => ({
   infoText: {
     paddingBottom: "10px"
   }
-}));
+});
 
-export default useStyles;
+export default styles;

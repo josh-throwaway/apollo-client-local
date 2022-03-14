@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Grid, TextField, Button} from "@material-ui/core";
+import { Grid, TextField, Button, withStyles} from "@material-ui/core";
 import { useMutation, useQuery } from "@apollo/client";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {LINKS_QUERY, ADD_LINK, QUERY_BY_SLUG} from '../../graphqlOperations';
 import styles from './styles';
 
-export default function InputForm(props) {
-  const classes = styles();
-
+function InputForm(props) {
   const [loading, setLoading] = useState(false);
   const [url, setUrl] = useState('');
   const [slug, setSlug] = useState('');
@@ -15,7 +13,7 @@ export default function InputForm(props) {
   const [slugErrorText, setSlugErrorText] = useState("");
   const [urlError, setUrlError] = useState(false);
   const [urlErrorText, setUrlErrorText] = useState("");
-  const {isMobile} = props;
+  const {isMobile, classes} = props;
   
   let invalidSlug = useQuery(QUERY_BY_SLUG, {variables: {slug}}).data;
   
@@ -88,3 +86,5 @@ export default function InputForm(props) {
     </Grid>
   );
 }
+
+export default withStyles(styles)(InputForm);
